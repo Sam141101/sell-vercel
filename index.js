@@ -36,6 +36,9 @@ app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 app.use("/api/search", searchRoute);
 app.use("/api/products/pagination", paginationRoute);
+app.get("/", (req, res) => {
+  res.send("This server is Connected");
+});
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is running!");
