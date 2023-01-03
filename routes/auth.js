@@ -47,7 +47,8 @@ router.post("/confirm/register", async (req, res) => {
 
     console.log(token);
 
-    const url = `${process.env.BASE_URL}auth/${savedUser._id}/verify/${token.token}`;
+    // const url = `${process.env.BASE_URL}auth/${savedUser._id}/verify/${token.token}`;
+    const url = `https://sell-vercel-client-six.vercel.app/auth/${savedUser._id}/verify/${token.token}`;
 
     await sendEmail(savedUser.email, "Verify Email", url);
 
