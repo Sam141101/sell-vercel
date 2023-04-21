@@ -5,31 +5,32 @@ const OrderSchema = new mongoose.Schema(
     userId: { type: String, required: true },
     products: [
       {
-        // productId: {
-        //   type: String,
-        // },
         product_id: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
-        // list_product: [
-        //   { type: mongoose.Schema.Types.ObjectId, ref: "ListProduct" },
-        // ],
-
         quantity: {
           type: Number,
-          default: 1,
+          required: true,
+          min: 1,
         },
         price: {
           type: Number,
+          required: true,
+          min: 0,
         },
         size: {
           type: String,
+          required: true,
         },
+
+        checkEvaluate: { type: Boolean, default: false },
       },
     ],
     amount: { type: Number, required: true },
     method: { type: String },
-    // address: { type: Object, required: true },
-    // address: { type: String },
+    coupon: { type: String },
     status: { type: String, default: "pending" },
+    expireAt: { type: Date, default: undefined, index: { expires: "0s" } }, // thêm field expireAt
+    cancelAt: { type: Date },
+    // shippingCost: { type: mongoose.Schema.Types.ObjectId, ref: "ShippingCost" },
   },
   { timestamps: true }
 );

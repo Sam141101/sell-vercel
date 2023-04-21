@@ -16,8 +16,18 @@ const UserSchema = new mongoose.Schema(
     img: { type: String },
     phone: { type: Number },
     gender: { type: String },
-    address: { type: Object },
+    // address: { type: String },
     verified: { type: Boolean, default: false },
+    firstTimeBuy: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    canceledOrder: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
